@@ -26,9 +26,11 @@ function Splash() {
   if (done) return null;
   return (
     <div className="fixed inset-0 z-[100] grid place-items-center bg-onyx" style={{ animation: "fade-in 0.4s ease-out reverse 1.9s both" }}>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_50%,oklch(0.22_0.09_155_/_0.35),transparent_70%)]" />
       <div className="relative">
-        <div className="absolute -inset-32 opacity-60 shimmer" />
-        <div className="relative font-display text-5xl md:text-7xl tracking-[0.3em] gold-text animate-gold-reveal">FLAMORA</div>
+        <div className="absolute -inset-32 opacity-50 shimmer" />
+        <div className="absolute -inset-32 opacity-20 emerald-shimmer" />
+        <div className="relative font-display text-5xl md:text-7xl tracking-[0.3em] gold-text animate-gold-reveal">FLĀMORĀ</div>
         <div className="mt-6 hairline-gold animate-fade-in" style={{ animationDelay: "0.8s" }} />
         <p className="mt-4 text-center eyebrow text-cream/60 animate-fade-in" style={{ animationDelay: "1.1s" }}>Maison de luxe</p>
       </div>
@@ -44,7 +46,8 @@ function HomePage() {
         {/* Hero */}
         <section className="relative h-[92vh] min-h-[640px] overflow-hidden">
           <img src={images.heroDark} alt="" className="absolute inset-0 h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-onyx/40 via-onyx/30 to-onyx" />
+          <div className="absolute inset-0 bg-gradient-to-b from-onyx/50 via-onyx/25 to-onyx" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_30%_40%,oklch(0.20_0.09_158_/_0.18),transparent_70%)]" />
           <div className="relative z-10 mx-auto grid h-full max-w-[1500px] grid-cols-12 items-end gap-6 px-6 pb-24">
             <div className="col-span-12 md:col-span-7">
               <p className="eyebrow animate-fade-up">Spring · MMXXVI</p>
@@ -133,9 +136,9 @@ function HomePage() {
         {/* Benefits */}
         <section className="mx-auto max-w-[1500px] px-6 py-16">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {benefits.map((b) => (
-              <div key={b.t} className="glass p-8">
-                <div className="mb-4 grid h-10 w-10 place-items-center rounded-full border border-gold/40 text-gold">
+            {benefits.map((b, i) => (
+              <div key={b.t} className={`p-8 ${i % 2 === 0 ? "glass" : "glass-emerald"}`}>
+                <div className={`mb-4 grid h-10 w-10 place-items-center rounded-full border text-gold ${i % 2 === 0 ? "border-gold/40" : "border-emerald/40"}`}>
                   <Check className="h-4 w-4" />
                 </div>
                 <h4 className="font-display text-xl text-cream">{b.t}</h4>

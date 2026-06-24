@@ -2,10 +2,10 @@ import { Link } from "@tanstack/react-router";
 
 export function Footer() {
   return (
-    <footer className="mt-32 border-t border-white/5 bg-noir/40">
+    <footer className="mt-32 border-t bg-noir/50" style={{ borderTopColor: "oklch(0.52 0.20 155 / 0.12)" }}>
       <div className="mx-auto grid max-w-[1500px] gap-12 px-6 py-20 md:grid-cols-5">
         <div className="md:col-span-2">
-          <div className="font-display text-3xl tracking-[0.3em] gold-text">FLAMORA</div>
+          <div className="font-display text-3xl tracking-[0.3em] gold-text">FLĀMORĀ</div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream/60">
             A maison for considered clothing and heirloom jewellery — crafted slowly, by few hands, for those who dress with intention.
           </p>
@@ -42,9 +42,9 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-white/5">
+      <div className="border-t" style={{ borderTopColor: "oklch(0.52 0.20 155 / 0.10)" }}>
         <div className="mx-auto flex max-w-[1500px] flex-col gap-2 px-6 py-6 text-[10px] uppercase tracking-[0.32em] text-cream/40 md:flex-row md:items-center md:justify-between">
-          <span>© 2026 Maison Flamora. All rights reserved.</span>
+          <span>© 2026 Maison Flāmorā. All rights reserved.</span>
           <span>Privacy · Terms · Cookies</span>
         </div>
       </div>

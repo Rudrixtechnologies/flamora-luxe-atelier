@@ -1,5 +1,5 @@
 import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
-import { LayoutDashboard, Package, Tag, ShoppingCart, Users, CreditCard, BarChart3 } from "lucide-react";
+import { LayoutDashboard, Package, Tag, ShoppingCart, Users, CreditCard, ChartBar as BarChart3 } from "lucide-react";
 
 export const Route = createFileRoute("/admin")({
   component: AdminLayout,
@@ -21,7 +21,7 @@ function AdminLayout() {
     <div className="min-h-screen grid md:grid-cols-[260px_1fr]">
       <aside className="border-r border-white/5 bg-noir/60 backdrop-blur-xl md:sticky md:top-0 md:h-screen">
         <div className="p-8">
-          <Link to="/" className="font-display text-2xl tracking-[0.3em] gold-text">FLAMORA</Link>
+          <Link to="/" className="font-display text-2xl tracking-[0.3em] gold-text">FLĀMORĀ</Link>
           <p className="mt-1 eyebrow text-cream/40">Console</p>
         </div>
         <nav className="px-4 pb-8 space-y-1">
