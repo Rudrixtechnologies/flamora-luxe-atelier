@@ -5,7 +5,7 @@ export const Route = createFileRoute("/admin")({
   component: AdminLayout,
 });
 
-const items = [
+const items: Array<{ to: string; l: string; i: typeof LayoutDashboard; exact?: boolean }> = [
   { to: "/admin", l: "Dashboard", i: LayoutDashboard, exact: true },
   { to: "/admin/products", l: "Products", i: Package },
   { to: "/admin/products/new", l: "Add Product", i: Tag },
@@ -13,7 +13,7 @@ const items = [
   { to: "/admin/users", l: "Users", i: Users },
   { to: "/admin/payments", l: "Payments", i: CreditCard },
   { to: "/admin/analytics", l: "Analytics", i: BarChart3 },
-] as const;
+];
 
 function AdminLayout() {
   const path = useRouterState({ select: (s) => s.location.pathname });
