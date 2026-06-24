@@ -28,9 +28,9 @@ function AdminLayout() {
           {items.map((it) => {
             const active = it.exact ? path === it.to : path.startsWith(it.to);
             return (
-              <Link key={it.to} to={it.to} className={`flex items-center gap-3 px-4 py-3 text-sm transition-colors ${active ? "bg-gold/10 text-gold border-l-2 border-gold" : "text-cream/70 hover:text-cream hover:bg-white/5 border-l-2 border-transparent"}`}>
+              <a key={it.to} href={it.to} className={`flex items-center gap-3 px-4 py-3 text-sm transition-colors ${active ? "bg-gold/10 text-gold border-l-2 border-gold" : "text-cream/70 hover:text-cream hover:bg-white/5 border-l-2 border-transparent"}`}>
                 <it.i className="h-4 w-4" /> {it.l}
-              </Link>
+              </a>
             );
           })}
         </nav>
