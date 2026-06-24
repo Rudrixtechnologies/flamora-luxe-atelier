@@ -30,75 +30,146 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-ivory: var(--ivory);
-  --color-bone: var(--bone);
-  --color-bronze: var(--bronze);
-  --color-bronze-deep: var(--bronze-deep);
-  --color-ink: var(--ink);
+  --color-onyx: var(--onyx);
+  --color-noir: var(--noir);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-soft: var(--gold-soft);
+  --color-cream: var(--cream);
+  --color-ash: var(--ash);
 
-  --font-display: "DM Serif Display", serif;
-  --font-sans: "Fira Sans", sans-serif;
+  --font-display: "Cormorant Garamond", serif;
+  --font-sans: "Jost", sans-serif;
 }
 
 :root {
-  --radius: 0.25rem;
+  --radius: 0.125rem;
 
-  /* Flamora palette */
-  --ivory: oklch(0.965 0.012 80);
-  --bone: oklch(0.91 0.022 75);
-  --bronze: oklch(0.55 0.07 65);
-  --bronze-deep: oklch(0.42 0.06 60);
-  --ink: oklch(0.21 0.012 60);
+  /* Flamora luxury palette */
+  --onyx: oklch(0.10 0.005 60);
+  --noir: oklch(0.16 0.008 60);
+  --gold: oklch(0.78 0.13 82);
+  --gold-deep: oklch(0.62 0.12 70);
+  --gold-soft: oklch(0.85 0.08 85);
+  --cream: oklch(0.94 0.018 80);
+  --ash: oklch(0.55 0.01 70);
 
-  --background: var(--ivory);
-  --foreground: var(--ink);
-  --card: oklch(0.985 0.008 80);
-  --card-foreground: var(--ink);
-  --popover: var(--ivory);
-  --popover-foreground: var(--ink);
-  --primary: var(--ink);
-  --primary-foreground: var(--ivory);
-  --secondary: var(--bone);
-  --secondary-foreground: var(--ink);
-  --muted: oklch(0.93 0.018 75);
-  --muted-foreground: oklch(0.45 0.025 65);
-  --accent: var(--bronze);
-  --accent-foreground: var(--ivory);
+  --background: var(--onyx);
+  --foreground: var(--cream);
+  --card: var(--noir);
+  --card-foreground: var(--cream);
+  --popover: var(--noir);
+  --popover-foreground: var(--cream);
+  --primary: var(--gold);
+  --primary-foreground: var(--onyx);
+  --secondary: oklch(0.22 0.01 60);
+  --secondary-foreground: var(--cream);
+  --muted: oklch(0.20 0.008 60);
+  --muted-foreground: var(--ash);
+  --accent: var(--gold);
+  --accent-foreground: var(--onyx);
   --destructive: oklch(0.55 0.22 27);
-  --destructive-foreground: var(--ivory);
-  --border: oklch(0.85 0.02 70);
-  --input: oklch(0.85 0.02 70);
-  --ring: var(--bronze);
-}
-
-.dark {
-  --background: oklch(0.18 0.012 60);
-  --foreground: var(--ivory);
+  --destructive-foreground: var(--cream);
+  --border: oklch(0.28 0.015 70 / 0.6);
+  --input: oklch(0.28 0.015 70 / 0.6);
+  --ring: var(--gold);
 }
 
 @layer base {
   * { border-color: var(--color-border); }
-  html { font-family: var(--font-sans); }
+  html { font-family: var(--font-sans); background: var(--onyx); }
   body {
-    background-color: var(--color-background);
+    background:
+      radial-gradient(ellipse at top, oklch(0.18 0.02 70 / 0.6), transparent 60%),
+      radial-gradient(ellipse at bottom right, oklch(0.18 0.03 80 / 0.4), transparent 60%),
+      var(--onyx);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-weight: 300;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
+    min-height: 100vh;
   }
-  h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.01em; }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.005em;
+  }
+  ::selection { background: var(--gold); color: var(--onyx); }
 }
 
 @utility eyebrow {
   font-family: var(--font-sans);
   font-size: 0.7rem;
   font-weight: 400;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.36em;
   text-transform: uppercase;
-  color: var(--bronze-deep);
+  color: var(--gold);
 }
 
-@utility hairline {
+@utility hairline-gold {
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--bronze) 30%, var(--bronze) 70%, transparent);
+  background: linear-gradient(to right, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
 }
+
+@utility glass {
+  background: color-mix(in oklab, var(--noir) 60%, transparent);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid color-mix(in oklab, var(--gold) 18%, transparent);
+}
+
+@utility gold-text {
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold), var(--gold-deep));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility gold-border {
+  border: 1px solid color-mix(in oklab, var(--gold) 35%, transparent);
+}
+
+@utility luxury-shadow {
+  box-shadow:
+    0 1px 0 color-mix(in oklab, var(--gold) 12%, transparent) inset,
+    0 30px 60px -20px rgb(0 0 0 / 0.6),
+    0 10px 30px -10px rgb(0 0 0 / 0.5);
+}
+
+@utility shimmer {
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    color-mix(in oklab, var(--gold) 40%, transparent) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes gold-reveal {
+  0% { opacity: 0; transform: scale(0.85); filter: blur(8px); }
+  60% { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@utility animate-fade-up { animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@utility animate-fade-in { animation: fade-in 0.8s ease-out both; }
+@utility animate-scale-in { animation: scale-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@utility animate-gold-reveal { animation: gold-reveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
