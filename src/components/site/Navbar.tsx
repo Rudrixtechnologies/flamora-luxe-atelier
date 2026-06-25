@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Search, User, Heart, ShoppingBag, Menu } from "lucide-react";
 import { useState } from "react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   { to: "/", label: "Home" },
@@ -49,6 +50,7 @@ export function Navbar() {
               <ShoppingBag className="h-4 w-4 hover:text-gold transition-colors" />
               <span className="absolute -top-2 -right-2 grid h-4 w-4 place-items-center rounded-full bg-gold text-[9px] text-onyx">2</span>
             </Link>
+            <ThemeToggle />
           </div>
         </div>
       </header>
