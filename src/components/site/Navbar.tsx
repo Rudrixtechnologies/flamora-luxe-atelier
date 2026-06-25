@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Search, User, Heart, ShoppingBag, Menu } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
@@ -14,10 +14,10 @@ const links = [
 
 export function TopBar() {
   return (
-    <div className="border-b border-emerald/10 bg-noir/70">
-      <div className="mx-auto flex max-w-[1500px] items-center justify-between px-6 py-2 text-[10px] tracking-[0.32em] uppercase text-cream/50">
+    <div className="border-b border-[color-mix(in_oklab,var(--gold)_14%,transparent)] bg-[color-mix(in_oklab,var(--onyx)_70%,transparent)] backdrop-blur-md">
+      <div className="mx-auto flex max-w-[1500px] items-center justify-between px-6 py-2 text-[10px] tracking-[0.32em] uppercase text-cream/55">
         <span className="hidden md:inline">Complimentary worldwide shipping over €300</span>
-        <span className="text-cream/70">Maison Flāmorā — Paris · Milan · Jaipur</span>
+        <span className="text-cream/75">Maison Flāmorā — Paris · Milan · Jaipur</span>
         <span className="hidden md:inline">EN / EUR</span>
       </div>
     </div>
@@ -26,11 +26,28 @@ export function TopBar() {
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <>
       <TopBar />
-      <header className="sticky top-0 z-40 border-b border-emerald/12 bg-onyx/92 backdrop-blur-xl" style={{ borderBottomColor: "oklch(0.52 0.20 155 / 0.10)" }}>
-        <div className="mx-auto flex max-w-[1500px] items-center justify-between gap-6 px-6 py-5">
+      <header
+        className={`sticky top-0 z-40 glass-nav transition-all duration-500 ${
+          scrolled ? "py-0" : "py-1"
+        }`}
+      >
+        <div
+          className={`mx-auto flex max-w-[1500px] items-center justify-between gap-6 px-6 transition-all duration-500 ${
+            scrolled ? "py-3" : "py-5"
+          }`}
+        >
           <button onClick={() => setOpen(true)} className="md:hidden text-cream/80" aria-label="Menu">
             <Menu className="h-5 w-5" />
           </button>
@@ -53,10 +70,15 @@ export function Navbar() {
             <ThemeToggle />
           </div>
         </div>
+        <span className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
       </header>
       {open && (
-        <div className="fixed inset-0 z-50 backdrop-blur-2xl md:hidden animate-fade-in" style={{ background: "oklch(0.13 0.052 158 / 0.97)" }} onClick={() => setOpen(false)}>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_45%,oklch(0.22_0.09_155_/_0.25),transparent_70%)] pointer-events-none" />
+        <div
+          className="fixed inset-0 z-50 backdrop-blur-2xl md:hidden animate-fade-in"
+          style={{ background: "color-mix(in oklab, var(--onyx) 92%, transparent)" }}
+          onClick={() => setOpen(false)}
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_45%,color-mix(in_oklab,var(--gold)_14%,transparent),transparent_70%)] pointer-events-none" />
           <nav className="relative flex h-full flex-col items-center justify-center gap-8 text-cream">
             {links.map((l) => (
               <Link key={l.to} to={l.to} className="font-display text-3xl tracking-wide hover:text-gold transition-colors" onClick={() => setOpen(false)}>

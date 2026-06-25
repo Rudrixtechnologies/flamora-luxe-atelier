@@ -43,18 +43,18 @@
   --font-sans: "Jost", sans-serif;
 }
 
+/* ─── DARK MODE — Rich Black + Charcoal, Emerald & Gold accents ─── */
 :root {
   --radius: 0.125rem;
 
-  /* Flamora forest-green jewel palette — drawn from the brand logo */
-  --onyx: oklch(0.13 0.052 158);         /* deep forest green — main background */
-  --noir: oklch(0.17 0.058 158);         /* lifted forest green — cards & panels */
-  --emerald: oklch(0.52 0.20 155);       /* vivid emerald — signature accent */
-  --gold: oklch(0.74 0.13 78);           /* warm antique gold */
-  --gold-deep: oklch(0.59 0.12 72);      /* rich deep gold */
-  --gold-soft: oklch(0.84 0.09 85);      /* pale champagne gold */
-  --cream: oklch(0.93 0.022 85);         /* warm ivory — logo text colour */
-  --ash: oklch(0.60 0.038 155);          /* muted sage — secondary text */
+  --onyx: oklch(0.10 0.005 270);          /* rich near-black */
+  --noir: oklch(0.16 0.008 270);          /* charcoal — cards & panels */
+  --emerald: oklch(0.58 0.16 158);        /* signature emerald accent */
+  --gold: oklch(0.78 0.13 82);            /* warm gold accent */
+  --gold-deep: oklch(0.62 0.12 75);       /* deep antique gold */
+  --gold-soft: oklch(0.88 0.08 85);       /* pale champagne */
+  --cream: oklch(0.95 0.012 85);          /* warm ivory typography */
+  --ash: oklch(0.65 0.010 270);           /* muted grey — secondary text */
 
   --background: var(--onyx);
   --foreground: var(--cream);
@@ -64,16 +64,16 @@
   --popover-foreground: var(--cream);
   --primary: var(--gold);
   --primary-foreground: var(--onyx);
-  --secondary: oklch(0.20 0.062 158);
+  --secondary: oklch(0.20 0.010 270);
   --secondary-foreground: var(--cream);
-  --muted: oklch(0.18 0.055 158);
+  --muted: oklch(0.18 0.008 270);
   --muted-foreground: var(--ash);
   --accent: var(--gold);
   --accent-foreground: var(--onyx);
   --destructive: oklch(0.55 0.22 27);
   --destructive-foreground: var(--cream);
-  --border: oklch(0.28 0.07 158 / 0.5);
-  --input: oklch(0.28 0.07 158 / 0.5);
+  --border: oklch(0.78 0.13 82 / 0.16);
+  --input: oklch(0.78 0.13 82 / 0.22);
   --ring: var(--gold);
 }
 
@@ -82,10 +82,10 @@
   html { font-family: var(--font-sans); background: var(--onyx); }
   body {
     background:
-      radial-gradient(ellipse 90% 55% at 50% 0%, oklch(0.22 0.09 155 / 0.45), transparent 65%),
-      radial-gradient(ellipse 60% 40% at 100% 100%, oklch(0.18 0.07 160 / 0.30), transparent 65%),
-      radial-gradient(ellipse 50% 35% at 0% 75%, oklch(0.16 0.065 155 / 0.22), transparent 60%),
-      var(--onyx);
+      radial-gradient(ellipse 85% 50% at 50% 0%, oklch(0.20 0.020 270 / 0.85), transparent 65%),
+      radial-gradient(ellipse 55% 40% at 100% 100%, oklch(0.30 0.10 158 / 0.16), transparent 65%),
+      radial-gradient(ellipse 50% 35% at 0% 80%, oklch(0.40 0.09 82 / 0.10), transparent 65%),
+      linear-gradient(180deg, oklch(0.08 0.005 270) 0%, oklch(0.12 0.008 270) 100%);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-weight: 300;
@@ -120,15 +120,25 @@
 }
 
 @utility glass {
-  background: color-mix(in oklab, var(--noir) 65%, transparent);
-  backdrop-filter: blur(24px) saturate(150%);
-  border: 1px solid color-mix(in oklab, var(--gold) 16%, transparent);
+  background: color-mix(in oklab, var(--noir) 55%, transparent);
+  backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid color-mix(in oklab, var(--gold) 18%, transparent);
 }
 
 @utility glass-emerald {
-  background: color-mix(in oklab, var(--noir) 65%, transparent);
-  backdrop-filter: blur(24px) saturate(150%);
-  border: 1px solid color-mix(in oklab, var(--emerald) 22%, transparent);
+  background: color-mix(in oklab, var(--noir) 55%, transparent);
+  backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid color-mix(in oklab, var(--emerald) 24%, transparent);
+}
+
+@utility glass-nav {
+  background: color-mix(in oklab, var(--onyx) 55%, transparent);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  border-bottom: 1px solid color-mix(in oklab, var(--gold) 18%, transparent);
+  box-shadow:
+    0 1px 0 color-mix(in oklab, var(--gold) 8%, transparent) inset,
+    0 18px 40px -20px oklch(0.04 0 0 / 0.6);
 }
 
 @utility gold-text {
@@ -139,7 +149,7 @@
 }
 
 @utility emerald-text {
-  background: linear-gradient(135deg, oklch(0.70 0.18 155), oklch(0.52 0.20 155), oklch(0.42 0.16 150));
+  background: linear-gradient(135deg, oklch(0.72 0.16 158), var(--emerald), oklch(0.46 0.14 152));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -156,14 +166,14 @@
 @utility luxury-shadow {
   box-shadow:
     0 1px 0 color-mix(in oklab, var(--gold) 10%, transparent) inset,
-    0 30px 70px -20px oklch(0.06 0.04 158 / 0.85),
-    0 10px 30px -10px oklch(0.06 0.04 158 / 0.65);
+    0 30px 70px -20px oklch(0.04 0 0 / 0.85),
+    0 10px 30px -10px oklch(0.04 0 0 / 0.65);
 }
 
 @utility forest-glow {
   box-shadow:
-    0 0 40px -10px color-mix(in oklab, var(--emerald) 25%, transparent),
-    0 20px 50px -15px oklch(0.06 0.04 158 / 0.70);
+    0 0 40px -10px color-mix(in oklab, var(--emerald) 30%, transparent),
+    0 20px 50px -15px oklch(0.04 0 0 / 0.70);
 }
 
 @utility shimmer {
@@ -221,56 +231,59 @@
 @utility animate-gold-reveal { animation: gold-reveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
 @utility animate-emerald-pulse { animation: emerald-pulse 3s ease-in-out infinite; }
 
-/* ─── Light mode overrides — Flamora Emerald (brand palette) ─── */
+/* ─── LIGHT MODE — Soft Ivory & Warm Beige, minimal luxury ─── */
 html.light {
-  /* surfaces — deep forest emerald from the velvet jewellery box */
-  --onyx: oklch(0.26 0.060 158);           /* deep forest green — main bg */
-  --noir: oklch(0.22 0.055 158);           /* darker emerald — cards / panels */
-  --emerald: oklch(0.36 0.085 158);        /* lifted emerald — accent surfaces */
+  --onyx: oklch(0.975 0.012 84);           /* soft ivory — main background */
+  --noir: oklch(0.955 0.018 82);           /* warm cream — cards & panels */
+  --emerald: oklch(0.42 0.11 158);         /* deep emerald accent (rare) */
+  --gold: oklch(0.56 0.115 70);            /* antique bronze — primary accent */
+  --gold-deep: oklch(0.44 0.105 60);       /* deep bronze */
+  --gold-soft: oklch(0.70 0.095 78);       /* warm champagne */
+  --cream: oklch(0.22 0.020 70);           /* near-black ink — primary text */
+  --ash: oklch(0.46 0.025 70);             /* warm taupe — secondary text */
 
-  /* antique gold from the logo engraving */
-  --gold: oklch(0.74 0.110 78);            /* warm brand gold */
-  --gold-deep: oklch(0.58 0.105 70);       /* darker bronze gold */
-  --gold-soft: oklch(0.82 0.085 82);       /* light champagne */
-
-  /* cream typography from the logo wordmark */
-  --cream: oklch(0.94 0.025 88);           /* warm ivory cream — primary text */
-  --ash: oklch(0.78 0.022 86);             /* muted cream — secondary text */
-
-  /* semantic tokens */
   --background: var(--onyx);
   --foreground: var(--cream);
   --card: var(--noir);
   --card-foreground: var(--cream);
-  --popover: var(--noir);
+  --popover: oklch(0.985 0.010 84);
   --popover-foreground: var(--cream);
   --primary: var(--gold);
-  --primary-foreground: var(--onyx);
-  --secondary: var(--emerald);
+  --primary-foreground: oklch(0.98 0.010 84);
+  --secondary: oklch(0.92 0.022 80);
   --secondary-foreground: var(--cream);
-  --muted: oklch(0.30 0.050 158);
+  --muted: oklch(0.93 0.020 82);
   --muted-foreground: var(--ash);
   --accent: var(--gold);
-  --accent-foreground: var(--onyx);
-  --border: oklch(0.74 0.110 78 / 0.28);
-  --input: oklch(0.74 0.110 78 / 0.32);
+  --accent-foreground: oklch(0.98 0.010 84);
+  --border: oklch(0.56 0.115 70 / 0.22);
+  --input: oklch(0.56 0.115 70 / 0.30);
   --ring: var(--gold);
 }
 
 html.light body {
   background:
-    radial-gradient(ellipse 90% 55% at 50% 0%, oklch(0.40 0.095 158 / 0.55), transparent 65%),
-    radial-gradient(ellipse 65% 45% at 100% 100%, oklch(0.32 0.075 155 / 0.55), transparent 65%),
-    radial-gradient(ellipse 50% 40% at 0% 80%, oklch(0.74 0.110 78 / 0.10), transparent 65%),
+    radial-gradient(ellipse 90% 55% at 50% 0%, oklch(0.95 0.030 82 / 0.85), transparent 65%),
+    radial-gradient(ellipse 65% 45% at 100% 100%, oklch(0.92 0.040 78 / 0.50), transparent 65%),
+    radial-gradient(ellipse 50% 40% at 0% 80%, oklch(0.96 0.020 90 / 0.70), transparent 65%),
     var(--onyx);
 }
 
-/* Glass panels: velvet emerald with brushed gold hairline */
 html.light .glass,
 html.light .glass-emerald {
-  background: color-mix(in oklab, var(--noir) 78%, transparent);
-  backdrop-filter: blur(24px) saturate(135%);
-  border: 1px solid color-mix(in oklab, var(--gold) 26%, transparent);
+  background: color-mix(in oklab, oklch(1 0 0) 62%, transparent);
+  backdrop-filter: blur(24px) saturate(140%);
+  border: 1px solid color-mix(in oklab, var(--gold) 24%, transparent);
+}
+
+html.light .glass-nav {
+  background: color-mix(in oklab, oklch(1 0 0) 60%, transparent);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  border-bottom: 1px solid color-mix(in oklab, var(--gold) 22%, transparent);
+  box-shadow:
+    0 1px 0 oklch(1 0 0 / 0.6) inset,
+    0 18px 40px -22px oklch(0.40 0.05 70 / 0.20);
 }
 
 html.light .hairline-emerald {
@@ -279,16 +292,15 @@ html.light .hairline-emerald {
 
 html.light .luxury-shadow {
   box-shadow:
-    0 1px 0 color-mix(in oklab, var(--gold) 18%, transparent) inset,
-    0 24px 60px -18px oklch(0.10 0.05 158 / 0.65),
-    0 8px 24px -8px oklch(0.10 0.05 158 / 0.55);
+    0 1px 0 oklch(1 0 0 / 0.5) inset,
+    0 24px 60px -18px oklch(0.40 0.05 70 / 0.22),
+    0 8px 24px -8px oklch(0.40 0.05 70 / 0.16);
 }
 
 html.light .forest-glow {
   box-shadow:
-    0 0 60px -10px color-mix(in oklab, var(--gold) 30%, transparent),
-    0 24px 60px -20px oklch(0.08 0.05 158 / 0.70);
+    0 0 60px -10px color-mix(in oklab, var(--gold) 28%, transparent),
+    0 24px 60px -20px oklch(0.40 0.05 70 / 0.20);
 }
 
-html.light ::selection { background: var(--gold); color: var(--onyx); }
-
+html.light ::selection { background: var(--gold); color: oklch(0.98 0.010 84); }
