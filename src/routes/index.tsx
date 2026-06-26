@@ -4,6 +4,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { SiteLayout } from "@/components/site/Layout";
 import { ProductCard } from "@/components/site/ProductCard";
 import { images, products, benefits } from "@/lib/catalog";
+import { ScrollExperience } from "@/components/site/ScrollExperience";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -68,6 +69,9 @@ function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Cinematic 3D scroll showcase */}
+        <ScrollExperience />
 
         {/* Category Select */}
         <section className="mx-auto max-w-[1500px] px-6 py-24">
