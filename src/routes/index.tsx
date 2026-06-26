@@ -44,33 +44,7 @@ function HomePage() {
     <>
       <Splash />
       <SiteLayout>
-        {/* Hero */}
-        <section className="relative h-[92vh] min-h-[640px] overflow-hidden">
-          <img src={images.heroDark} alt="" className="absolute inset-0 h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-onyx/50 via-onyx/25 to-onyx" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_30%_40%,oklch(0.20_0.09_158_/_0.18),transparent_70%)]" />
-          <div className="relative z-10 mx-auto grid h-full max-w-[1500px] grid-cols-12 items-end gap-6 px-6 pb-24">
-            <div className="col-span-12 md:col-span-7">
-              <p className="eyebrow animate-fade-up">Spring · MMXXVI</p>
-              <h1 className="mt-6 font-display text-6xl md:text-8xl leading-[0.95] text-cream animate-fade-up" style={{ animationDelay: "0.15s" }}>
-                Choose<br /><span className="gold-text italic">Your Luxury</span>
-              </h1>
-              <p className="mt-6 max-w-md text-cream/70 animate-fade-up" style={{ animationDelay: "0.3s" }}>
-                Discover timeless elegance — heirloom jewellery and considered clothing, crafted by the few for the discerning.
-              </p>
-              <div className="mt-10 flex flex-wrap gap-4 animate-fade-up" style={{ animationDelay: "0.45s" }}>
-                <Link to="/shop" className="group inline-flex items-center gap-3 bg-gold px-8 py-4 text-[10px] uppercase tracking-[0.32em] text-onyx hover:bg-gold-soft transition-colors">
-                  Discover the Maison <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                </Link>
-                <Link to="/jewellery" className="inline-flex items-center gap-3 gold-border px-8 py-4 text-[10px] uppercase tracking-[0.32em] text-cream hover:bg-gold/10 transition-colors">
-                  Jewellery Atelier
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Cinematic 3D scroll showcase */}
+        {/* Cinematic 3D scroll showcase — primary hero */}
         <ScrollExperience />
 
         {/* Category Select */}
