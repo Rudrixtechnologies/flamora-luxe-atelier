@@ -70,6 +70,9 @@ function HomePage() {
           </div>
         </section>
 
+        {/* Cinematic 3D scroll showcase */}
+        <ScrollExperience />
+
         {/* Category Select */}
         <section className="mx-auto max-w-[1500px] px-6 py-24">
           <div className="mb-16 text-center">
