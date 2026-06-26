@@ -4,6 +4,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { SiteLayout } from "@/components/site/Layout";
 import { ProductCard } from "@/components/site/ProductCard";
 import { images, products, benefits } from "@/lib/catalog";
+import { ScrollExperience } from "@/components/site/ScrollExperience";
 
 export const Route = createFileRoute("/")({
   head: () => ({
